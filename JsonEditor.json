@@ -1,0 +1,232 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "voice banking",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AccountBalanceIntent",
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "samples": [
+                                "pin is  {PIN}",
+                                "{PIN}"
+                            ]
+                        },
+                        {
+                            "name": "BALANCE",
+                            "type": "yesNoType"
+                        }
+                    ],
+                    "samples": [
+                        "How much is there in my account",
+                        "How much amount is there in my account",
+                        "account balance please",
+                        "what is my balance amount",
+                        "what is my account balance",
+                        "my account balance please"
+                    ]
+                },
+                {
+                    "name": "CreditCardIntent",
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "samples": [
+                                "{PIN}",
+                                "pin is {PIN}"
+                            ]
+                        },
+                        {
+                            "name": "DUEDATE",
+                            "type": "yesNoType"
+                        },
+                        {
+                            "name": "PAYMENT",
+                            "type": "yesNoType"
+                        }
+                    ],
+                    "samples": [
+                        "when is credit card due",
+                        "by when i need to pay credit card bill",
+                        "payment due date please",
+                        "when is the payment due date",
+                        "Credit Card Payment Due Date",
+                        "credit card payment details"
+                    ]
+                },
+                {
+                    "name": "AMAZON.RepeatIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "yesNoType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "yes",
+                                "synonyms": [
+                                    "yes",
+                                    "yep",
+                                    "yeah",
+                                    "I do",
+                                    "yes please",
+                                    "you know it"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "AccountBalanceIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1070046777170.708627352809"
+                            }
+                        },
+                        {
+                            "name": "BALANCE",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "CreditCardIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1091987484652.1379168048283"
+                            }
+                        },
+                        {
+                            "name": "DUEDATE",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "PAYMENT",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.161439207150.1556262637763",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.149900792355.243732584878.913480507946",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Pelase provide valid amount to transfer"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1070046777170.708627352809",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.917196910282.1264456451033",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.343573779736.1266691570061",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide valid value"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.957536055743.173261331184",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1091987484652.1379168048283",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            }
+        ]
+    }
+}
