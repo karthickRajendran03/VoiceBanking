@@ -30,6 +30,7 @@ public class RepeatIntentHandler extends BaseHandler {
         } else {
         	speechText = SpeechTextsConstants.NO_REPEAT_SPEECH_TEXT;
         }        
-        return buildResponse(input, speechText, GeneralConstants.REPEAT_CARD_TITLE, false);
+        return buildResponse(input, speechText, GeneralConstants.REPEAT_CARD_TITLE,
+				false, true);
     }
 }

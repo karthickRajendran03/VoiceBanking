@@ -26,18 +26,21 @@ public class CompletedAccountBalanceIntentHandler extends BaseHandler implements
     @Override
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
 		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();
-		AccountDetails result = BankClientLink.getAccountDetails(token);
+		AccountDetails result = new AccountDetails();
+		result.setAcctId("1234");
+		result.setAcctType("Sample");
+		result.setBalance("12");
+		result.setPin("1234");
+		result.setName("Karthick");
+		//AccountDetails result = BankClientLink.getAccountDetails(token);
 		Slot verify = intentRequest.getIntent().getSlots().get(SlotNameConstants.BALANCE);
-		String speechText;
-		boolean endSesssion;
+		String speechText;		
 		if(verify.getValue() != null && verify.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode().toString().equals(GeneralConstants.SUCCESS_MATCH)) {
-			speechText = "Your " +result.getAcctType() + " account ending with account number "+result.getAcctId() +" has an account balance " +result.getBalance()+ " rupees. Thank you for using Voice Banking. Goodbye";
-			endSesssion = true;
+			speechText = "Your " +result.getAcctType() + " account ending with account number "+result.getAcctId() +" has an account balance " +result.getBalance()+ " rupees. Thank you for using Voice Banking. Goodbye";			
 		} else {
-			speechText = SpeechTextsConstants.END_SESSION;
-			endSesssion = true;
-		}
-		return buildResponse(input, speechText, GeneralConstants.ACCOUNT_BALANCE_CARD_TITLE, endSesssion);	       
+			speechText = SpeechTextsConstants.END_SESSION;			
+		}		
+		return buildResponse(input, speechText, GeneralConstants.ACCOUNT_BALANCE_CARD_TITLE, true, false);
     }
     
     boolean validSessionNeededForRepeat() {

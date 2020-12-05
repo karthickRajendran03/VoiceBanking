@@ -10,7 +10,7 @@ import com.amazon.ask.banking.constants.SpeechTextsConstants;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 
-public class HelpIntentHandler extends BaseHandler {
+public class HelpIntentHandler extends BaseHandler{
 	
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -19,12 +19,7 @@ public class HelpIntentHandler extends BaseHandler {
 
     @Override
 	public Optional<Response> handle(HandlerInput input) {
-		String speechText = SpeechTextsConstants.HELP_SPEECH_TEXT;
-		return input.getResponseBuilder()
-				.withSpeech(speechText)
-				.withShouldEndSession(false)
-				.withSimpleCard(GeneralConstants.HELP_CARD_TITLE, SpeechTextsConstants.HELP_SPEECH_CARD_TEXT)
-				.withReprompt(speechText)
-				.build();
+		return buildResponse(input, SpeechTextsConstants.HELP_SPEECH_TEXT, GeneralConstants.HELP_CARD_TITLE,
+				false, true);
 	}
 }

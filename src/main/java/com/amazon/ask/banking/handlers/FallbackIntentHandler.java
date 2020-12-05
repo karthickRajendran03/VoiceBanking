@@ -10,7 +10,7 @@ import com.amazon.ask.banking.constants.SpeechTextsConstants;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 
-public class FallbackIntentHandler extends BaseHandler {	
+public class FallbackIntentHandler extends BaseHandler{	
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -18,9 +18,9 @@ public class FallbackIntentHandler extends BaseHandler {
     }
 
     @Override
-    public Optional<Response> handle(HandlerInput input) {
-        String speechText = SpeechTextsConstants.FALLBACK_SPEECH_TEXT;        
-        return buildResponse(input, speechText, GeneralConstants.FALLBACK_CARD_TITLE, false);
+    public Optional<Response> handle(HandlerInput input) {                
+		return buildResponse(input, SpeechTextsConstants.FALLBACK_SPEECH_TEXT, GeneralConstants.FALLBACK_CARD_TITLE,
+				false, true);
     }
 
 }

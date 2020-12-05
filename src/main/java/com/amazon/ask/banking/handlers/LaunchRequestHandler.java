@@ -21,7 +21,7 @@ public class LaunchRequestHandler extends BaseHandler{
     public Optional<Response> handle(HandlerInput input) {
     	String speechText = null;
     	boolean endSesssion;
-		if (input.getRequestEnvelope().getSession().getUser().getAccessToken() == null) {
+		/*if (input.getRequestEnvelope().getSession().getUser().getAccessToken() == null) {
 			speechText = SpeechTextsConstants.ACCOUNT_LINKING_SPEECH_TEXT;
 			endSesssion = true;
 			return input.getResponseBuilder()
@@ -33,7 +33,10 @@ public class LaunchRequestHandler extends BaseHandler{
 			speechText = SpeechTextsConstants.WELCOME_SPEECH_TEXT;
 			endSesssion = false;
 			return buildResponse(input, speechText, GeneralConstants.WELCOME_TITLE, endSesssion);
-		}    	
+		} */ 
+    	speechText = SpeechTextsConstants.WELCOME_SPEECH_TEXT;
+		endSesssion = false;
+		return buildResponse(input, speechText, GeneralConstants.WELCOME_TITLE, endSesssion, true);
     }
 
 }

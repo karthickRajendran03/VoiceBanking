@@ -25,16 +25,13 @@ public class CompletedCreditCardIntentHandler extends BaseHandler implements Int
     @Override
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {		
 		Slot payment = intentRequest.getIntent().getSlots().get(SlotNameConstants.PAYMENT);
-		String speechText;
-		boolean endSesssion;
+		String speechText;		
 		if(payment.getValue() != null && payment.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode().toString().equals(GeneralConstants.SUCCESS_MATCH)) {
-			speechText = SpeechTextsConstants.CREDIT_CARD_PAYMENT;
-			endSesssion = true;
+			speechText = SpeechTextsConstants.CREDIT_CARD_PAYMENT;			
 		} else {
-			speechText = SpeechTextsConstants.END_SESSION;
-			endSesssion = true;
-		}
-		return buildResponse(input, speechText, GeneralConstants.CREDIT_CARD_TITLE, endSesssion);
+			speechText = SpeechTextsConstants.END_SESSION;			
+		}		
+		return buildResponse(input, speechText, GeneralConstants.CREDIT_CARD_TITLE, true, false);
 	       
     }
     

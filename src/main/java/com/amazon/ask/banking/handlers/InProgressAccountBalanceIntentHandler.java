@@ -30,29 +30,27 @@ public class InProgressAccountBalanceIntentHandler extends BaseHandler implement
     @Override
 	public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
 		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();
-		AccountDetails result = BankClientLink.getAccountDetails(token);
-		String speechText = null;		
+		AccountDetails result = new AccountDetails();
+		result.setAcctId("1234");
+		result.setAcctType("Sample");
+		result.setBalance("12");
+		result.setPin("1234");
+		result.setName("Karthick");
+		//AccountDetails result = BankClientLink.getAccountDetails(token);
+		String speechText = null;
+		String slotName = null;
 		Intent intent = intentRequest.getIntent();
 		Map<String, Slot> slotMap = intent.getSlots();
 		Slot pin = slotMap.get(SlotNameConstants.PIN);
 		if (pin.getValue().toString().equals(result.getPin())) {
 			speechText = SpeechTextsConstants.PIN_SUCCESS_BALANCE_SPEECH_TEXT + result.getAcctId();
-			return input.getResponseBuilder()
-					.withSpeech(speechText)
-					.withReprompt(speechText)
-					.addElicitSlotDirective(SlotNameConstants.BALANCE, intentRequest.getIntent())
-					.withSimpleCard(GeneralConstants.ACCOUNT_BALANCE_CARD_TITLE, speechText)
-					.withShouldEndSession(false)
-					.build();
+			slotName = SlotNameConstants.BALANCE;			
 		} else {
 			speechText = SpeechTextsConstants.PIN_INVALID_SPEECH_TEXT;
-			return input.getResponseBuilder()
-					.withSpeech(speechText)
-					.withReprompt(speechText)
-					.addElicitSlotDirective(SlotNameConstants.PIN, intentRequest.getIntent())
-					.withSimpleCard(GeneralConstants.ACCOUNT_BALANCE_CARD_TITLE, speechText)
-					.withShouldEndSession(false)
-					.build();
+			slotName = SlotNameConstants.PIN;			
 		}		
+		
+		return buildResponse(input, speechText, GeneralConstants.ACCOUNT_BALANCE_CARD_TITLE,
+				false, intentRequest, slotName);
 	}
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-05T16:51:53" hostname="LTIN180417" time="2.699">
+  <properties/>
+  <testcase name="testHandleResponseBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="2.56"/>
+  <testcase name="testHandleRequestBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.079"/>
+  <testcase name="testHelpIntentName" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.06"/>
+  <system-out><![CDATA[2020-12-05 22:21:56 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:45 - Building response, text : <voice name="Brian">You can do request for linking bank account, account balance, credit card details. What would you like to do? Please say Repeat to hear it again</voice>,false
+2020-12-05 22:21:56 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:61 - Storing intent with attributes: {}
+]]></system-out>
+  <system-err><![CDATA[SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/Users/458459/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.8.2/36bc2a99b86be26ccdc51fe288458dc712d280c1/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/458459/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.0/8837262ff98225a81608b8c11aea642d9449228b/slf4j-log4j12-1.7.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/458459/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.1/19e1e2be2670b33c5dcc835550527028dddddcd1/logback-classic-1.1.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+]]></system-err>
+</testsuite>

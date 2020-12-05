@@ -10,7 +10,7 @@ import com.amazon.ask.banking.constants.SpeechTextsConstants;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 
-public class CancelandStopIntentHandler extends BaseHandler {
+public class CancelandStopIntentHandler extends BaseHandler{
 	
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -19,13 +19,9 @@ public class CancelandStopIntentHandler extends BaseHandler {
     }
 
 	@Override
-	public Optional<Response> handle(HandlerInput input) {
-		return input.getResponseBuilder()
-				.withSpeech(SpeechTextsConstants.STOP_SPEECH_TEXT)
-				.withShouldEndSession(true)
-				.withSimpleCard(GeneralConstants.STOP_CANCEL_CARD_TITLE, SpeechTextsConstants.STOP_SPEECH_CARD_TEXT)
-				.withReprompt(SpeechTextsConstants.STOP_SPEECH_TEXT)
-				.build();
+	public Optional<Response> handle(HandlerInput input) {		
+		return buildResponse(input, SpeechTextsConstants.STOP_SPEECH_CARD_TEXT, GeneralConstants.STOP_CANCEL_CARD_TITLE,
+				true, false);
 	}
 	
 	boolean validSessionNeededForRepeat() {
