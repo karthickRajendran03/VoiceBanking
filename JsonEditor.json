@@ -2,6 +2,11 @@
     "interactionModel": {
         "languageModel": {
             "invocationName": "voice banking",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",
@@ -66,6 +71,10 @@
                         {
                             "name": "PAYMENT",
                             "type": "yesNoType"
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
+                            "type": "yesNoType"
                         }
                     ],
                     "samples": [
@@ -80,6 +89,72 @@
                 {
                     "name": "AMAZON.RepeatIntent",
                     "samples": []
+                },
+                {
+                    "name": "LinkBankAccountIntent",
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "samples": [
+                                "{PIN}",
+                                "pin is  {PIN}"
+                            ]
+                        },
+                        {
+                            "name": "ROUTINGNUMBER",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "ACCOUNTNUMBER",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "CATEGORY",
+                            "type": "CATEGORY"
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
+                            "type": "yesNoType"
+                        }
+                    ],
+                    "samples": [
+                        "Link my bank account for credit card payment",
+                        "Link my bank account for Loan payment",
+                        "Link my bank account"
+                    ]
+                },
+                {
+                    "name": "PersonalLoanIntent",
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "samples": [
+                                "{PIN} is my pin",
+                                "pin is {PIN}",
+                                "{PIN}"
+                            ]
+                        },
+                        {
+                            "name": "DUEDATE",
+                            "type": "yesNoType"
+                        },
+                        {
+                            "name": "PAYMENT",
+                            "type": "yesNoType"
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
+                            "type": "yesNoType"
+                        }
+                    ],
+                    "samples": [
+                        "let me know Personal loan details",
+                        "Please provide Personal loan details",
+                        "Personal loan details please",
+                        "Personal loan details"
+                    ]
                 }
             ],
             "types": [
@@ -97,6 +172,26 @@
                                     "yes please",
                                     "you know it"
                                 ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CATEGORY",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Personal Loan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Student Loan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Credit Card"
                             }
                         }
                     ]
@@ -153,6 +248,103 @@
                         },
                         {
                             "name": "PAYMENT",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "LinkBankAccountIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.789765322767.1033609673488"
+                            }
+                        },
+                        {
+                            "name": "ROUTINGNUMBER",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {},
+                            "validations": [
+                                {
+                                    "type": "isGreaterThan",
+                                    "prompt": "Slot.Validation.789765322767.1600991160701.1187501287766",
+                                    "value": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ACCOUNTNUMBER",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {},
+                            "validations": [
+                                {
+                                    "type": "isGreaterThan",
+                                    "prompt": "Slot.Validation.789765322767.1245208718667.1234722731874",
+                                    "value": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CATEGORY",
+                            "type": "CATEGORY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "PersonalLoanIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "PIN",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1000305116404.1251942695424"
+                            }
+                        },
+                        {
+                            "name": "DUEDATE",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "PAYMENT",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
                             "type": "yesNoType",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
@@ -220,6 +412,96 @@
             },
             {
                 "id": "Elicit.Slot.1091987484652.1379168048283",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.789765322767.1600991160701.1187501287766",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide the valid routing number"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.789765322767.1600991160701",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide the bank Routing Number"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.789765322767.1600991160701",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to proceed with this routing number"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.789765322767.1245208718667.1234722731874",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide the valid account number"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.789765322767.1245208718667",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide the Account Number"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.789765322767.1245208718667",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to proceed with this account number"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.789765322767.1033609673488",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "okay, Can i have your four digit Voice PIN please"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.788258374782.721471504908",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide the valid Payment category"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.788258374782.721471504908",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to choose this category for payment"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1000305116404.1251942695424",
                 "variations": [
                     {
                         "type": "PlainText",
