@@ -9,6 +9,7 @@ import com.amazon.ask.banking.constants.IntentNameConstants;
 import com.amazon.ask.banking.constants.SlotNameConstants;
 import com.amazon.ask.banking.constants.SpeechTextsConstants;
 import com.amazon.ask.banking.model.AccountDetails;
+import com.amazon.ask.banking.model.AccountValidation;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.impl.IntentRequestHandler;
 import com.amazon.ask.model.DialogState;
@@ -35,13 +36,12 @@ public class InProgressLinkBankAccountIntentHandler extends BaseHandler implemen
 		String slotName = null;		
 		Slot accountNum = intentRequest.getIntent().getSlots().get(SlotNameConstants.ACCOUNT_NUMBER);
 		boolean endSesssion;
-		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();		
-		//AccountDetails result = BankClientLink.getABAService(token, routingNum.getValue());
+		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();	
 		if(accountNum.getValue() != null) {
-			boolean pbaValidation = true;
-			boolean mbaasValidation = true;
-			//boolean abaValidation = BankClientLink.getABAService(token, routingNum.getValue());
-			if(pbaValidation && mbaasValidation) {	
+			AccountValidation mbaValidation = BankClientLink.getMbaasAccountValidation(token, accountNum.getValue());
+			AccountValidation pbaValidation = BankClientLink.getPbaAccountValidation(token, accountNum.getValue());	
+			if(null != mbaValidation && mbaValidation.getValid().equals("valid")
+					&& null != pbaValidation && pbaValidation.getValid().equals("valid")) {							
 				slotName = SlotNameConstants.PAYMENT_CATEGORY;
 				speechText = SpeechTextsConstants.ACCOUNT_NUMBER_VALID;
 				endSesssion = false;								

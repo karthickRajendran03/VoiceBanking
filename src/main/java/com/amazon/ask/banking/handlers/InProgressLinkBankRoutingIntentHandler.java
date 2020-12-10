@@ -8,7 +8,7 @@ import com.amazon.ask.banking.constants.GeneralConstants;
 import com.amazon.ask.banking.constants.IntentNameConstants;
 import com.amazon.ask.banking.constants.SlotNameConstants;
 import com.amazon.ask.banking.constants.SpeechTextsConstants;
-import com.amazon.ask.banking.model.AccountDetails;
+import com.amazon.ask.banking.model.RoutingNumberValidation;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.impl.IntentRequestHandler;
 import com.amazon.ask.model.DialogState;
@@ -35,12 +35,10 @@ public class InProgressLinkBankRoutingIntentHandler extends BaseHandler implemen
 		String slotName = null;
 		Slot routingNum = intentRequest.getIntent().getSlots().get(SlotNameConstants.ROUTING_NUMBER);
 		boolean endSesssion;
-		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();		
-		//AccountDetails result = BankClientLink.getABAService(token, routingNum.getValue());
+		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();				
 		if(routingNum.getValue() != null) {
-			boolean abaValidation = true;
-			//boolean abaValidation = BankClientLink.getABAService(token, routingNum.getValue());
-			if(abaValidation) {	
+			RoutingNumberValidation result = BankClientLink.getRoutingValidation(token, routingNum.getValue());								
+			if(null != result && result.getValid().equals("valid")) {	
 				speechText = SpeechTextsConstants.ROUTING_NUMBER_VALID;
 				slotName = SlotNameConstants.ACCOUNT_NUMBER;
 				endSesssion = false;				

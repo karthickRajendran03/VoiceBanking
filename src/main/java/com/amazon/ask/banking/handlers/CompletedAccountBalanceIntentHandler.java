@@ -25,14 +25,8 @@ public class CompletedAccountBalanceIntentHandler extends BaseHandler implements
 
     @Override
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
-		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();
-		AccountDetails result = new AccountDetails();
-		result.setAcctId("1234");
-		result.setAcctType("Sample");
-		result.setBalance("12");
-		result.setPin("1234");
-		result.setName("Karthick");
-		//AccountDetails result = BankClientLink.getAccountDetails(token);
+		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();		
+		AccountDetails result = BankClientLink.getAccountDetails(token);
 		Slot verify = intentRequest.getIntent().getSlots().get(SlotNameConstants.BALANCE);
 		String speechText;		
 		if(verify.getValue() != null && verify.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode().toString().equals(GeneralConstants.SUCCESS_MATCH)) {
