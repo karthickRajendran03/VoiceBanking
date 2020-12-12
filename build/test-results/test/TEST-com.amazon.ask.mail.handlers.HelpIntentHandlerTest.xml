@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-10T13:41:11" hostname="LTIN180417" time="2.541">
+<testsuite name="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-10T14:35:11" hostname="LTIN180417" time="2.495">
   <properties/>
-  <testcase name="testHandleResponseBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="2.404"/>
-  <testcase name="testHandleRequestBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.059"/>
-  <testcase name="testHelpIntentName" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.077"/>
-  <system-out><![CDATA[2020-12-10 19:11:13 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:45 - Building response, text : <voice name="Brian">You can do request for linking bank account, account balance, credit card details,Personal loan details. What would you like to do? Please say Repeat to hear it again</voice>,false
-2020-12-10 19:11:13 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:61 - Storing intent with attributes: {}
+  <testcase name="testHandleResponseBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="2.436"/>
+  <testcase name="testHandleRequestBody" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.029"/>
+  <testcase name="testHelpIntentName" classname="com.amazon.ask.mail.handlers.HelpIntentHandlerTest" time="0.03"/>
+  <system-out><![CDATA[2020-12-10 20:05:14 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:45 - Building response, text : <voice name="Brian">You can do request for linking bank account, account balance, credit card details,Personal loan details. What would you like to do? Please say Repeat to hear it again</voice>,false
+2020-12-10 20:05:14 AWSRequestId:  AWSXRayID:  INFO  BaseHandler:61 - Storing intent with attributes: {}
 ]]></system-out>
   <system-err><![CDATA[SLF4J: Class path contains multiple SLF4J bindings.
 SLF4J: Found binding in [jar:file:/C:/Users/458459/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.8.2/36bc2a99b86be26ccdc51fe288458dc712d280c1/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
