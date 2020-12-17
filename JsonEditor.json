@@ -252,6 +252,13 @@
                             "confirmationRequired": false,
                             "elicitationRequired": false,
                             "prompts": {}
+                        },
+                        {
+                            "name": "INITIATEPAYMENT",
+                            "type": "yesNoType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
                         }
                     ]
                 },
@@ -478,7 +485,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "okay, Can i have your four digit Voice PIN please"
+                        "value": "okay, Please share your OTP received on your registered mobile number"
                     }
                 ]
             },
