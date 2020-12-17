@@ -50,6 +50,6 @@ public class InProgressCreditCardPaymentIntentHandler extends BaseHandler implem
 		}		
 							
 		return buildResponse(input, speechText, GeneralConstants.CREDIT_CARD_TITLE,
-				endSesssion, intentRequest, SlotNameConstants.INITIATE_PAYMENT);
+				endSesssion, intentRequest, SlotNameConstants.PAYMENT);
 	}
 }

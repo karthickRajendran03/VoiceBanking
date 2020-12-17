@@ -44,7 +44,7 @@ public class InProgressLinkBankPinIntentHandler extends BaseHandler implements I
 			speechText = SpeechTextsConstants.PIN_SUCCESS_LINK_BANK_SPEECH_TEXT;
 			slotName = SlotNameConstants.ROUTING_NUMBER;			
 		} else {
-			speechText = SpeechTextsConstants.PIN_INVALID_SPEECH_TEXT;	
+			speechText = SpeechTextsConstants.PIN_INVALID_LINK_BANK_SPEECH_TEXT;	
 			slotName = SlotNameConstants.PIN;			
 		}		
 		return buildResponse(input, speechText, GeneralConstants.LINK_BANK_CARD_TITLE,

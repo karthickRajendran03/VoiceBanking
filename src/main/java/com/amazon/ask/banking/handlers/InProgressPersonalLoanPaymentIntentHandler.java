@@ -33,15 +33,7 @@ public class InProgressPersonalLoanPaymentIntentHandler extends BaseHandler impl
 		String speechText = null;
 		String slotName = null;
 		Slot payment = intentRequest.getIntent().getSlots().get(SlotNameConstants.PAYMENT);
-		boolean endSesssion;
-		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();
-		AccountDetails result = new AccountDetails();
-		result.setAcctId("1234");
-		result.setAcctType("Sample");
-		result.setBalance("12");
-		result.setPin("1234");
-		result.setName("Karthick");
-		//AccountDetails result = BankClientLink.getAccountDetails(token);
+		boolean endSesssion;				
 		if(payment.getValue() != null && payment.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode().toString().equals(GeneralConstants.SUCCESS_MATCH)) {
 			speechText = SpeechTextsConstants.PERSONAL_LOAN_EXISTING_ACCOUNT;
 			endSesssion = false;

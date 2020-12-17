@@ -10,7 +10,7 @@ public class GeneralConstants {
 	public static final String REPEAT_CARD_TITLE = "RepeatBanking";
 	public static final String ACCOUNT_BALANCE_CARD_TITLE = "AccountBalance";
 	public static final String CREDIT_CARD_TITLE = "CreditCardDetails";
-	public static final String PERSONAL_LOAN_CARD_TITLE = "CreditCardDetails";
+	public static final String PERSONAL_LOAN_CARD_TITLE = "PersonalLoanDetails";
 	public static final String LINK_BANK_CARD_TITLE = "LinkBankAccount";
 	public static final String PIN_CARD_TITLE = "PinVerification";
 	public static final String ERROR_CARD_TITLE = "Exceptionbanking";

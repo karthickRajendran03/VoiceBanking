@@ -48,7 +48,7 @@ public class InProgressLinkBankRoutingIntentHandler extends BaseHandler implemen
 				endSesssion = false;				
 			}
 		} else {
-			speechText = SpeechTextsConstants.END_SESSION;
+			speechText = SpeechTextsConstants.END_SESSION_VALIDATION;
 			endSesssion = true;			
 		}		
 		

@@ -8,7 +8,7 @@ import com.amazon.ask.banking.constants.GeneralConstants;
 import com.amazon.ask.banking.constants.IntentNameConstants;
 import com.amazon.ask.banking.constants.SlotNameConstants;
 import com.amazon.ask.banking.constants.SpeechTextsConstants;
-import com.amazon.ask.banking.model.AccountDetails;
+import com.amazon.ask.banking.model.CreditCardDetails;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.impl.IntentRequestHandler;
 import com.amazon.ask.model.DialogState;
@@ -36,12 +36,12 @@ public class InProgressLinkBankCategoryIntentHandler extends BaseHandler impleme
 		Slot category = intentRequest.getIntent().getSlots().get(SlotNameConstants.PAYMENT_CATEGORY);
 		boolean endSesssion;
 		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();		
-		//AccountDetails result = BankClientLink.getABAService(token, routingNum.getValue());
 		if(category.getValue() != null) {
 			endSesssion = false;
 			slotName = SlotNameConstants.INITIATE_PAYMENT;
 			if(category.getValue().equals(GeneralConstants.CREDIT_CARD_CATEGORY)) {
-				speechText = SpeechTextsConstants.CREDIT_CARD_PROCESS;			
+				CreditCardDetails result = BankClientLink.getCreditCardDetails(token);
+				speechText = SpeechTextsConstants.CREDIT_CARD_PROCESS + result.getAcctId().substring(5) + SpeechTextsConstants.CREDIT_CARD_PROCESS_1;			
 			} else if(category.getValue().equals(GeneralConstants.PERSONAL_LOAN_CATEGORY)) {
 				speechText = SpeechTextsConstants.PERSONAL_LOAN_PROCESS;
 			} else if(category.getValue().equals(GeneralConstants.STUDENT_LOAN_CATEGORY)) {

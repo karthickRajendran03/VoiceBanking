@@ -32,15 +32,7 @@ public class InProgressPersonalLoanDueDateIntentHandler extends BaseHandler impl
 		String speechText = null;
 		String slotName = null;
 		Slot dueDateValue = intentRequest.getIntent().getSlots().get(SlotNameConstants.DUEDATE);
-		boolean endSesssion;
-		String token = input.getRequestEnvelope().getSession().getUser().getAccessToken();
-		AccountDetails result = new AccountDetails();
-		result.setAcctId("1234");
-		result.setAcctType("Sample");
-		result.setBalance("12");
-		result.setPin("1234");
-		result.setName("Karthick");
-		//AccountDetails result = BankClientLink.getAccountDetails(token);
+		boolean endSesssion;		
 		if(dueDateValue.getValue() != null && dueDateValue.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode().toString().equals(GeneralConstants.SUCCESS_MATCH)) {
 			speechText = SpeechTextsConstants.PERSONAL_LOAN_DUEDATE;
 			endSesssion = false;
